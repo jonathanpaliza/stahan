@@ -1,0 +1,41 @@
+{% extends "layout.html" %} 
+
+{% block content %} 
+   <form method="post" action="/add">
+        <div class="mb-3">
+            <label class="form-label">Items</label>
+            <input type="text" class="form-control" name="item">
+        </div>
+
+         <input type="submit" value="Add" class="btn btn-primary mb-3">  
+  
+   </form>
+
+   <div class="col-12">
+        <table class="table table-dark table-responsive">
+            <thead width="200">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody width="200">
+                {% for item in items %}
+                    <tr>
+                        <td scope="col-9 row">{{ item.id }}</td>
+                        <td scope="col-9 row">{{ item.name }}</td>
+                        <td scope="col-9 row" width="200">
+                            <a href="/delete/{{ item.id }}" class="btn btn-danger">Delete</a>
+                            <a href="/edit/{{ item.id }}" class="btn btn-success">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   </div>
+
+
+
+
+{% endblock content %}
